@@ -19,7 +19,7 @@ app.post('/api/post', function (req, res) {
         res.end(rev)
     })
 })
-const server = app.listen(88, function (req, res, next) {
+const server = app.listen(80, function (req, res, next) {
     let host = server.address().address
     let port = server.address().port
     console.log("http://%s:%s", host, port)
