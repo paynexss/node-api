@@ -1,8 +1,9 @@
+const {stormEncrypt,stormDecrypt} = require('./stormSniffer');
 /*
 * 构建各个app接口地址及请求参数
 *
 * */
-function buildData(obj){
+function buildPostData(obj){
     let platform = obj.platform;
     let data = {};
     switch (platform) {
@@ -25,4 +26,39 @@ function buildData(obj){
     }
     return data;
 }
-module.exports={buildData}
+function buildLocalData(obj){
+    let platform = obj.platform;
+    let args = obj.data;
+    switch (platform) {
+        case 'stormSniffer':
+            let uid = obj.key;
+            let decrypt = stormDecrypt(args,uid);
+            let parse = JSON.parse(decrypt);
+            setStormData(parse);
+            if (parse.hasOwnProperty("deviceList")) {
+                let device = parse.deviceList[0];
+                setStormData(device);
+                parse.deviceList[0] = device;
+            }
+            obj.data = stormEncrypt(JSON.stringify(parse), uid);
+            break;
+        default:
+            break;
+    }
+    return obj;
+}
+function setStormData(parse) {
+    if (parse.hasOwnProperty("isVip")) {
+        parse.isVip = 1;
+    }
+    if (parse.hasOwnProperty("expire_on")) {
+        parse.expire_on = '2099-12-31 08:00';
+    }
+    if (parse.hasOwnProperty("member_title")) {
+        parse.member_title = 'PayNe Pro';
+    }
+    if (parse.hasOwnProperty("function_list")) {
+        parse.function_list = [1, 2, 3, 4, 5];
+    }
+}
+module.exports={buildPostData, buildLocalData}
