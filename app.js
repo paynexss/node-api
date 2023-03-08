@@ -32,14 +32,16 @@ function buildLocalData(obj){
     switch (platform) {
         case 'stormSniffer':
             let uid = obj.key;
-            let decrypt = stormDecrypt(args,uid);
+            /*let decrypt = stormDecrypt(args,uid);
             let parse = JSON.parse(decrypt);
             setStormData(parse);
             if (parse.hasOwnProperty("deviceList")) {
                 let device = parse.deviceList[0];
                 setStormData(device);
                 parse.deviceList[0] = device;
-            }
+            }*/
+            let t = new Date().getTime().toString().substr(0,10);
+            let retStr = `{"uid": "${uid}", "isVip": 1, "member_type": 2, "member_title": "PayNe \u7ec8\u8eab\u7248 A", "expire_on": "\u6c38\u4e45\u6709\u6548", "auth_quantity": 5, "function_list": [1, 2, 3, 4, 5], "timestamp": ${t}, "ts": 0}`
             obj.data = stormEncrypt(JSON.stringify(parse), uid);
             break;
         default:
