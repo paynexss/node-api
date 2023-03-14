@@ -7,9 +7,9 @@ var prefix = `29hgfhdfv78344`;
 // console.log(new Buffer(encrypt_data).toString('base64'));
 // var decrypt_data = xxtea.toString(xxtea.decrypt(encrypt_data, xxtea.toBytes(key)));
 // var decrypt_data = xxtea.toString(xxtea.decrypt('42R6uT+atfWnDTvGPfGbxjNavX7QNvZ7VFUICRsO9ZvI/dKPusu56VttHiXayZclnpeVjkfAp1vTcdTaeI/DEUPrSDUaEyi07MjwVdFMH+y1lhjDQaDmuhA7ULmM92S0AIjs537mkgU=', xxtea.toBytes(key)));
-let uid = `a965e6d3b47444e9b65853caa3b0d820`
-// let uid = `aad104638f914feeb4ba214b929e716f`
-let encStr = `H/qwFnwesMd9XD605eNhmUo8V6xBiT4DtErL1VuBfUO3xHEZycXSEBdRr3CCIjFRRlHxRyQG885fKgO8SSWu8mOFZ6iYumXX6h5waeB2y5VUNXnopv0izaLMoWa2uDILpN93wMFr2O1liqbp6qtLqk6cuDaHr9ALcf0paf8C8e1Qkq1jcvl+ansnR0GhxJ5MswMzmSSRi5oOxx15w2bGsgi/yfG//gEhug3QGExxKTbfEa2S4Q5r0rzwr7SPU7xCA+SWNd6Y9iDAUGDcOGSmuYmuyGN6wWh/XZJkRxshe5G7SzmO`
+// let uid = `a965e6d3b47444e9b65853caa3b0d820`
+let uid = `aad104638f914feeb4ba214b929e716f`
+let encStr = `kZVtQXblYdpMybI5a9kWb9sQd\\/nyINrMry2DCqDfb7uq7DM\\/wWZy\\/XmPt9mfWqpDCDE7pylAFtmruWZ5DPkoCdDHRXVxV44nc8LDS3T9Xr1lPUYo+6SdJTBIxb7jeQAkDnfwRU0ao+cSh2Fc+\\/u8Dbu0l7\\/u7sgL9M0AHNbhCuaV6aexsqSXIP0YYQBVstDnlJufKMHTGbkBsX7ZY74WzU2KvaJb7gG+WAHSfrOFAzk311lKst9\\/cVKoEkZjOPKhDYSL78Yk\\/kmULHCBos46bFBfmg\\/cgAYQhqtO8snW51aiMELSnzkOHFYA\\/YNcGVz1LDImOMKGggPix0r7Qs36ZACSvzRZ9oJCVqTTCd\\/ZRvIqa8YdEEiPGwcEEbV4IKloht0BGQvFwMByKKS+bJmf8YOpYUMnMD57laYy+a0jVPA=`
 console.log(stormDecrypt(encStr,uid));
 // console.log(stormEncrypt(`{"order_id": "202303081101333889214", "member_type": 0, "timestamp": 1678244493, "ts": 0}`,uid))
 // console.log(stormEncrypt(`{"product_id":"","s":"CE1F013E-FDB8-47ED-82B2-0A8E082500B1"}`,uid))
