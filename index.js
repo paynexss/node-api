@@ -17,12 +17,12 @@ app.post('/api/post', function (req, res) {
     let body = req.body;
     if (req.body.type === 'local') {
         let data = buildLocalData(req.body);
-        // console.log(data);
+        console.log(new Date().toLocaleString()+'----'+JSON.stringify(data));
         res.end(JSON.stringify(data.data));
     } else if (req.body.type === 'net') {
         let data = buildPostData(req.body);
         getData(data).then((rev)=>{
-            // console.log(rev);
+            //console.log(rev);
             res.end(rev)
         })
     }
