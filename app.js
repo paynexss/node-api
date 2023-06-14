@@ -41,7 +41,7 @@ function buildLocalData(obj){
                 parse.deviceList[0] = device;
             }*/
             let t = new Date().getTime().toString().substr(0,10);
-            let retStr = `{"uid": "${uid}", "isVip": 1, "member_type": 2, "member_title": "PayNe Pro", "expire_on": "https://t.me/fhxueyue", "auth_quantity": 5, "function_list": [1, 2, 3, 4, 5], "timestamp": ${t}, "ts": 0}`
+            let retStr = `{"uid": "${uid}", "isVip": 1, "member_type": 2, "member_title": "PayNe Pro", "expire_on": "https://t.me/paynegroup", "auth_quantity": 5, "function_list": [1, 2, 3, 4, 5], "timestamp": ${t}, "ts": 0}`
             obj.data = stormEncrypt(retStr, uid);
             break;
         default:
