@@ -20,9 +20,10 @@ app.post('/api/post', function (req, res) {
         console.log(new Date().toLocaleString()+'----'+JSON.stringify(data));
         res.end(JSON.stringify(data.data));
     } else if (req.body.type === 'net') {
-        let data = buildPostData(req.body);
+        let data = buildPostData(req.headers,req.body);
+        // console.log(`buildPostData`,data);
         getData(data).then((rev)=>{
-            //console.log(rev);
+            // console.log(rev);
             res.end(rev)
         })
     }
