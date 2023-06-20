@@ -21,7 +21,7 @@ app.post('/api/post', function (req, res) {
         res.end(JSON.stringify(data.data));
     } else if (req.body.type === 'net') {
         let data = buildPostData(req.headers,req.body);
-        // console.log(`buildPostData`,data);
+        console.log(`buildPostData`,data);
         getData(data).then((rev)=>{
             // console.log(rev);
             res.end(rev)

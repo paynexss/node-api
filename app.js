@@ -1,13 +1,16 @@
 const {stormEncrypt,stormDecrypt} = require('./stormSniffer');
+const {zhihu,blbl} = require('./reqData')
+
 /*
 * 构建各个app接口地址及请求参数
 *
 * */
-function buildPostData(headers,obj){
+function buildPostData(reQheaders,obj){
     let platform = obj.platform;
     let data = {
         method: 'POST'
     };
+    let headers = {};
     switch (platform) {
         case 'lsp':
             data = {
@@ -20,7 +23,8 @@ function buildPostData(headers,obj){
             };
             break;
         case 'zhihu':
-            let headers = {
+            headers = zhihu.headers;
+            /*let headers = {
                 // 'host': obj.host,
                 'user-agent':'ZhihuHybrid osee2unifiedRelease/14614 osee2unifiedReleaseVersion/9.8.0 Mozilla/5.0 (iPhone; CPU iPhone OS 16_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148',
                 'authorization': 'Bearer 2.1gSrrRAAAAAAAANPqRQOCFgsAAABgAlVNqmK1ZAB1gMhIkc_LYbNm0nTNYpmTSwIFDg',
@@ -30,8 +34,8 @@ function buildPostData(headers,obj){
                 'x-app-version': '9.8.0',
                 'x-udid': 'AADT6kUDghZLBcvMuBwGZAyRT8jeppYGNis=',
                 'x-zse-96': '1.0_e8rXQRLuELkUEDmHh8tzievIC5JYSPEMQ1NatLsUorE/ZRaivPlMnYTJCY9x+z1j',
-                'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
-            };
+                'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*!/!*;q=0.8'
+            };*/
             data = {
                 url: obj.url,
                 method: 'GET',
@@ -39,7 +43,14 @@ function buildPostData(headers,obj){
                 headers: headers
             }
             break;
-        case 'ximalaya':
+        case 'blbl':
+            headers = blbl.headers;
+            data = {
+                url: obj.url,
+                method: 'POST',
+                data: obj.data,
+                headers: headers
+            }
             break;
         default:
             break;
@@ -64,6 +75,9 @@ function buildLocalData(obj){
             let retStr = `{"uid": "${uid}", "isVip": 1, "member_type": 1, "member_title": "https://t.me/paynegroup", "expire_on": "随时失效,支持正版", "auth_quantity": 99, "function_list": [1, 2, 3, 4, 5], "timestamp": ${t}, "ts": 0}`
             obj.data = stormEncrypt(retStr, uid);
             break;
+        case 'plw':
+            obj.data = args.replace(/myOrder":\d+/g, 'myOrder":1');
+            break
         default:
             break;
     }
